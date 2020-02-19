@@ -1,0 +1,28 @@
+{
+  "name": "frosh/platform-webp",
+  "version": "0.1.0",
+  "description": "Generates additional webp images",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "FriendsOfShopware",
+          "homepage": "https://friendsofshopware.de"
+      }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Frosh\\WebP\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "*"
+  },
+  "extra": {
+    "shopware-plugin-class": "Frosh\\WebP\\FroshPlatformWebP",
+    "label": {
+      "de-DE": "WebP Unterstüzung",
+      "en-GB": "WebP Support"
+    }
+  }
+}

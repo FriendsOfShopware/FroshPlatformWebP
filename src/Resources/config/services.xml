@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults autoconfigure="true" autowire="true"/>
+        <service id="Frosh\WebP\Services\ThumbnailService" decorates="Shopware\Core\Content\Media\Thumbnail\ThumbnailService">
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="media_thumbnail.repository"/>
+            <argument type="service" id="shopware.filesystem.public"/>
+            <argument type="service" id="shopware.filesystem.private"/>
+            <argument type="service" id="Shopware\Core\Content\Media\Pathname\UrlGeneratorInterface"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="Frosh\WebP\Services\Generator\WebPGeneratorInterface"/>
+        </service>
+
+        <prototype namespace="Frosh\WebP\" resource="../../*" exclude="../../Services/ThumbnailService.php"/>
+
+        <service id="Frosh\WebP\Services\TemplateLoader" decorates="twig.loader" autoconfigure="false">
+            <argument type="service" id="Frosh\WebP\Services\TemplateLoader.inner"/>
+        </service>
+
+        <service id="Frosh\WebP\Services\Generator\WebPGeneratorInterface">
+            <factory class="Frosh\WebP\Services\Generator\WebPGeneratorFactory" method="factory"/>
+            <argument type="tagged" tag="frosh.webp.generator"/>
+        </service>
+
+        <instanceof id="Frosh\WebP\Services\Generator\WebPGeneratorInterface">
+            <tag name="frosh.webp.generator"/>
+        </instanceof>
+    </services>
+</container>
