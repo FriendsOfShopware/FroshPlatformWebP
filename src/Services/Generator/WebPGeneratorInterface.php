@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Frosh\WebP\Services\Generator;
 
 interface WebPGeneratorInterface
