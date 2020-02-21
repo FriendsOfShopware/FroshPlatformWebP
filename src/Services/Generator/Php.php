@@ -2,7 +2,7 @@
 
 namespace Frosh\WebP\Services\Generator;
 
-class PHP implements WebPGeneratorInterface
+class Php implements WebPGeneratorInterface
 {
     public function generate($thumbnail, int $quality): string
     {
